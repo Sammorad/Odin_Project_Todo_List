@@ -17,13 +17,21 @@ Todos = class{
 
 function addActivity(){
     //function to add activities to the todo list 
-    let title = prompt("Input title: ");
-    let description = prompt("Input description for this todo: ");
-    let date = prompt("Input date in the format yyyy-mm-dd:");
-    let status  = prompt ("Is the activity conclluded 'true or false': ");
-    let todo1 = new Todos(title, description, date, status)
-    todo1.addTodo()
-    console.log(todoList)
+    numberItems = prompt("how many items will you add: ")
+    numberItems = Number(numberItems)
+    let i = 0
+    while (i < numberItems){
+        let title = prompt("Input title: ");
+        let description = prompt("Input description for this todo: ");
+        let date = prompt("Input date in the format yyyy-mm-dd:");
+        let status  = prompt ("Is the activity conclluded 'true or false': ");
+        let todo1 = new Todos(title, description, date, status)
+        todo1.addTodo()
+        i = i + 1
+
+    }
+    
+  return todoList
 
 
 }
@@ -37,17 +45,26 @@ function viewTodolist(){
 
 }
 
+function deleteItem(){
+    //function to delete items from the todo list//
+    let delItem = prompt("Enter ttile of items to delete: ")
+    let newList = todoList.filter(item => item.title == delItem);
+    return newList
+    
+}
+
 main = function(){
     //main function controlling the todo list// 
+    let result;
     let whatToDo = prompt("what will u do 'input todo:T', 'view todo: v': ")
     if (whatToDo == "T"){
-        return addActivity()
+        result = addActivity()
     }
     else if (whatToDo == "v"){
-        return viewTodolist()
+        result = viewTodolist()
     }
 
-
+console.log(result)
 }
 
 main()
