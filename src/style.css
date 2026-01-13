@@ -1,4 +1,87 @@
 /*styling with css*/
+
+html, body{
+    height: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+
+}
 body{
-    background-color: rebeccapurple;
+    padding: 0px;
+    margin: 0px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-height:  100vh;
+    background-color: rgb(211, 211, 211);
+}
+.headings{
+    /*main heading of the page containing logo and name */
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid black;
+    border-radius: 2px;
+    
+}
+.todoicon{
+    /*styling the logo icon */
+    width: 70px;
+    align-items: center;
+}
+
+.page{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin: 0px 10px 0px ;
+    padding: 0px;
+}
+h1,h3{
+    margin: 0px;
+    
+}
+section{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    border: 2px solid black;
+    
+}
+.section{
+    border: 2px solid black;
+}
+.menu{
+    /*to style the menu and plus in a div*/
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+    margin:0px 10px 0px 10px;
+}
+.searchform{
+    /*styling the search input and search icon in the form*/
+    display:flex;
+    justify-content: space-between;
+    align-content: center;
+    margin: 0px 10px 0px 10px 
+}
+
+.searchIcon{
+    /*Styling the search image*/
+    width: 25px;
+}
+.projectForm{
+    /*styling of project form*/
+    justify-self: center;
+    justify-items: center;
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: #ffffff   ;
+    
+}
+
+.inputdiv, .buttondiv{
+    /*styling the project divs*/
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    margin: 10px;
 }
