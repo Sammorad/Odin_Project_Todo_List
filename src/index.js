@@ -2,17 +2,9 @@
 import "./style.css";
 import plus01 from "./images/plus.svg";
 import searchImg from "./images/search-web.svg"
-import { addProject, viewProject, delProject } from "./projects";
+import {todoList, addProject, viewProject, delProject } from "./projects.js";
 
-let todoList = [
-    {title:"food", items: [
-        {title: "buy", description:"make purchases", date: "2026-03-26", status:true},
-        {title:"cook", description:"cook delicacy", date : "2026-03-27", status: true},
-    ]}, 
-    {title: "School", items : [
 
-    ]}
-]
 //adding various sections to template//
 let section = document.querySelector("section");//section from template.html
 let div1 = document.createElement("div")
@@ -85,16 +77,25 @@ plus.addEventListener("click", ()=>{
     ProjectSave.type = "submit";
     ProjectSave.textContent = "Save";
     buttonDiv.appendChild(ProjectSave)
+    //lets add an event listner to the Projectsave button//
+    ProjectSave.addEventListener("click", function(event){
+        event.preventDefault();
+        //add the project to the and also under div 5 where Projects appear//
+        addProject(projectInput.value)
+        let listedPro = document.createElement("h3");
+        listedPro.textContent = projectInput.value
+        div5.appendChild(listedPro)
+
+    })
     const ProjectCancel = document.createElement("button");
     ProjectCancel.textContent = "Cancel"
     ProjectCancel.type = "button"
     buttonDiv.appendChild(ProjectCancel)
     projectForm.appendChild(buttonDiv)
-    div2.appendChild(projectForm)
-
-
-    
+    div2.appendChild(projectForm)   
 })
+
+
 
 
 

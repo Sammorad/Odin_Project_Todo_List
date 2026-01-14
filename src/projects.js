@@ -1,3 +1,13 @@
+export let todoList = [
+    {title:"food", items: [
+        {title: "buy", description:"make purchases", date: "2026-03-26", status:true},
+        {title:"cook", description:"cook delicacy", date : "2026-03-27", status: true},
+    ]}, 
+    {title: "School", items : [
+
+    ]}
+]
+
 export class Projects {
     //class to create projects for the todo list 
     //including a module to this project to the list 
@@ -14,21 +24,13 @@ export class Projects {
 
 }
 
-export function addProject(){
+export function addProject(title){
     //a function to add new projects to the todo list//
-
-    let numberItems = prompt("how many projects do you want to add: ");
-    numberItems = Number(numberItems);//changing the number of items from string to numbers//
-    let i = 0;
-    while (i< numberItems){
-       let title = prompt("What is the project tile:");
-        let items = []
-        let project = new Projects(title, items)
-        project.addPro()
-         i = i+1
-    }
-   
-    return todoList
+        if (!title || String(title).trim() === "") return null;
+        const items = []
+        const project = new Projects(String(title).trim(), items)
+        todoList.push(project) 
+        return project;
 }
 
 export function viewProject(){
