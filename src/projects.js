@@ -4,7 +4,7 @@ export let todoList = [
         {title:"cook", description:"cook delicacy", date : "2026-03-27", status: true},
     ]}, 
     {title: "School", items : [
-
+        
     ]}
 ]
 
@@ -24,13 +24,19 @@ export class Projects {
 
 }
 
+export function getTodoList(){
+    return todoList;
+}
+
 export function addProject(title){
     //a function to add new projects to the todo list//
         if (!title || String(title).trim() === "") return null;
         const items = []
         const project = new Projects(String(title).trim(), items)
         todoList.push(project) 
-        return project;
+        console.log("update todoList:", getTodoList() )
+        return getTodoList();
+        
 }
 
 export function viewProject(){

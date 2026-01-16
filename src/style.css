@@ -56,7 +56,7 @@ section{
     border: 1px solid black;
     margin:0px 10px 0px 10px;
 }
-.searchform{
+.searchform, .projdiv{
     /*styling the search input and search icon in the form*/
     display:flex;
     justify-content: space-between;

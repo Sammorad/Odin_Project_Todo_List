@@ -2,8 +2,10 @@
 import "./style.css";
 import plus01 from "./images/plus.svg";
 import searchImg from "./images/search-web.svg"
-import {todoList, addProject, viewProject, delProject } from "./projects.js";
+import {todoList, addProject, viewProject, delProject, getTodoList } from "./projects.js";
+import projImg from "./images/list-box-outline.svg"
 
+let currentTodoList = todoList
 
 //adding various sections to template//
 let section = document.querySelector("section");//section from template.html
@@ -47,6 +49,36 @@ projectTitle.innerText = "Project";
 div4.appendChild(projectTitle);
 let div5 = document.createElement("div");//div containing a list of projects in the order they are added 
 div4.appendChild(div5)
+function ProjdivListerner(){
+    
+}
+
+//attach each project in todo list to div 5 to display under project//
+function updateProjectDisplay(){
+    div5.innerHTML = "";
+    for (let project of currentTodoList){
+    let Projdiv = document.createElement("div");
+    Projdiv.classList.add("projdiv")
+    let projIcon = document.createElement("img");
+    projIcon.classList.add("searchIcon")
+    projIcon.src = projImg;
+    Projdiv.appendChild(projIcon)
+    let projList = document.createElement("h4");
+    projList.textContent = project.title
+    Projdiv.appendChild(projList)
+    div5.appendChild(Projdiv)
+    
+
+
+}
+
+
+}
+
+
+
+
+
 
 plus.addEventListener("click", ()=>{
     //first is to ensure a form does not exist by clearing it if it does exist//
@@ -59,7 +91,8 @@ plus.addEventListener("click", ()=>{
     const formHeading = document.createElement("h1");
     formHeading.textContent = "New Project";
     projectForm.appendChild(formHeading);
-    const inputDiv = document.createElement("div")//creating a container for input and its label//
+    //creating a container for input and its label//
+    const inputDiv = document.createElement("div")
     inputDiv.classList.add("inputdiv")
     let projectLabel = document.createElement("label");
     projectLabel.htmlFor = "project-input";
@@ -81,19 +114,40 @@ plus.addEventListener("click", ()=>{
     ProjectSave.addEventListener("click", function(event){
         event.preventDefault();
         //add the project to the and also under div 5 where Projects appear//
-        addProject(projectInput.value)
-        let listedPro = document.createElement("h3");
-        listedPro.textContent = projectInput.value
-        div5.appendChild(listedPro)
-
+        try{
+            console.log("Project input value: ", projectInput.value)
+            currentTodoList = addProject(projectInput.value)
+            console.log("Current todoList from getter:", getTodoList());
+            updateProjectDisplay()
+            
+            console.log("Project displayed in UI");
+        } catch(error){
+            console.error("error adding project:", error);
+            console.error("Stack trace:", error.stack);
+        }
+        
+        
+        
     })
     const ProjectCancel = document.createElement("button");
     ProjectCancel.textContent = "Cancel"
     ProjectCancel.type = "button"
+    ProjectCancel.addEventListener("click", (event)=>{
+         event.preventDefault();
+        projectForm.remove();
+
+
+    })
     buttonDiv.appendChild(ProjectCancel)
     projectForm.appendChild(buttonDiv)
     div2.appendChild(projectForm)   
 })
+
+
+
+
+
+
 
 
 

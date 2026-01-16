@@ -1,4 +1,12 @@
+export let todoList = [
+    {title:"food", items: [
+        {title: "buy", description:"make purchases", date: "2026-03-26", status:true},
+        {title:"cook", description:"cook delicacy", date : "2026-03-27", status: true},
+    ]}, 
+    {title: "School", items : [
 
+    ]}
+]
 Projects = class{
     //class to create projects for the todo list 
     //including a module to this project to the list 
