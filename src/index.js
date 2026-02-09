@@ -49,9 +49,26 @@ projectTitle.innerText = "Project";
 div4.appendChild(projectTitle);
 let div5 = document.createElement("div");//div containing a list of projects in the order they are added 
 div4.appendChild(div5)
-function ProjdivListerner(){
-    
+
+
+function handleProjectClick (project){
+    //function to handle project when they are clicked//
+    div2.innerHTML = "";
+    let ProjectName = document.createElement("h2");
+    ProjectName.textContent = project.title
+    div2.appendChild(ProjectName);
+    //task bar to add todo in each of the project//
+    let ProjectTaskBar = document.createElement("div");
+    ProjectTaskBar.classList.add("taskbar");
+    let barImage = document.createElement("img");
+    barImage.src = plus01;
+    ProjectTaskBar.appendChild(barImage)
+    let barImageTitle = document.createElement("p");
+    barImageTitle.textContent = "Add New Task"
+    ProjectTaskBar.appendChild(barImageTitle)
+    div2.appendChild(ProjectTaskBar)
 }
+
 
 //attach each project in todo list to div 5 to display under project//
 function updateProjectDisplay(){
@@ -65,6 +82,9 @@ function updateProjectDisplay(){
     Projdiv.appendChild(projIcon)
     let projList = document.createElement("h4");
     projList.textContent = project.title
+    projList.addEventListener("click", () =>{
+        handleProjectClick(project)
+    })
     Projdiv.appendChild(projList)
     div5.appendChild(Projdiv)
     
@@ -74,9 +94,6 @@ function updateProjectDisplay(){
 
 
 }
-
-
-
 
 
 
